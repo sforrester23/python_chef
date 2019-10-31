@@ -4,9 +4,18 @@
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
-include recipe 'python'
-python_pip 'requests'
 
-python_pip "requests" do
-  virtualenv "/home/ubuntu/my_ve"
+apt_update 'update_sources' do
+  action :update
+end
+
+package "python" do
+  action :install
+end
+
+package 'python-pip'  # package default will install
+
+#### requests==2.3.0  #######
+execute 'install requests==2.3.0' do
+  command 'pip install requests==2.3.0'
 end

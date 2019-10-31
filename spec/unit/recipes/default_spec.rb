@@ -15,11 +15,16 @@ describe 'python_requests::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
-    it 'installs python' do
-      expect(chef_run).to include_recipe 'python'
+    it 'should run apt-get update ' do
+      expect(chef_run).to update_apt_update 'update_sources'
     end
-    it 'installs requests package' do
-      expect(chef_run).to install_python 'requests'
+
+    it 'should install python package' do
+      expect(chef_run).to install_package 'python'
+    end
+
+    it 'should install Python package management pip' do
+      expect(chef_run).to install_package 'python-pip'
     end
   end
 end

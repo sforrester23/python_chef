@@ -1,4 +1,3 @@
 # python_requests
 
-TODO: Enter the cookbook description here.
-
+repo to install python and use pip to install "requests" package
